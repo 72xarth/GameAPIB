@@ -162,8 +162,8 @@ router.put("/scoreupdate",async (req, res) => {
   const data = req.body;
   console.log(data);
 
-  let scoreA;
-  let scoreB;
+  let scoreA = 0;
+  let scoreB = 0;
   let ra = 1 / (1 + Math.pow(10, (data.scoreB - data.scoreA) / 400));
   let rb = 1 / (1 + Math.pow(10, (data.scoreA - data.scoreB) / 400));
 
@@ -240,7 +240,14 @@ router.put("/scoreupdate",async (req, res) => {
     })
   ])  
     .then(result=>{
-      res.status(200).send(result);
+      res.status(200).json({
+        gidA : data.gidA,
+        oldAscore : data.scoreA,
+        scoreA : scoreA,
+        gidB : data.gidB,
+        oldBscore : data.scoreB,
+        scoreB : scoreB
+      });
     })
     .catch(error=>{
       res.status(400).send(error);
