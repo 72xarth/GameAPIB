@@ -334,7 +334,7 @@ router.post("/graph/:id",async (req, res) => {
   const id = req.params.id;
  
   
-  let sql = "SELECT DISTINCT DATE_FORMAT(Date, '%Y-%m-%d') AS Date, score  FROM state  WHERE GSID = ? AND DATEDIFF(Date, CURDATE()) <= 7 ORDER BY Date ASC";
+  let sql = "SELECT DATE_FORMAT(Date, '%Y-%m-%d') AS Date, score FROM state WHERE GSID = ? AND datediff(CURRENT_DATE,Date) <= 6  ORDER BY Date ASC;";
   conn.query(sql, id, (err, result) => {
     if (err) throw err;
     res
