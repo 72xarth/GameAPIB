@@ -240,14 +240,7 @@ router.put("/scoreupdate",async (req, res) => {
     })
   ])  
     .then(result=>{
-      res.status(200).json({
-        gidA : data.gidA,
-        oldAscore : data.scoreA,
-        scoreA : scoreA,
-        gidB : data.gidB,
-        oldBscore : data.scoreB,
-        scoreB : scoreB
-      });
+      res.status(200).json({err : "Sdsdsd"});
     })
     .catch(error=>{
       res.status(400).send(error);
